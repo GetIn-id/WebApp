@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-            GetIn-GetRekt-GetOut
+            GetIn-GetRekt-GetOut Yeeboi
         </a>
       </header>
     </div>
