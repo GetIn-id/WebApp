@@ -1,21 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Home from "./screens/Home";
+import Contact from "./screens/Contact";
+import Privacy from "./screens/Privacy";
+import Product from "./screens/Product";
+import About from "./screens/About";
 
 function App() {
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: "#00e575",
+      },
+    },
+  });
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-            GetIn-GetRekt-GetOut Yeeboi
-        </a>
-      </header>
-    </div>
+    <Router>
+      <ThemeProvider theme={theme}>
+        <Routes>
+          <Route path="/" element={<Home/>} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/product" element={<Product />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
+        </ThemeProvider>
+    </Router>
   );
 }
 
