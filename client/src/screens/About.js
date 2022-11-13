@@ -5,7 +5,23 @@ import React from "react";
 function About() {
   return (
     <Box minHeight={"80vh"}>
-      <Typography>About us</Typography>
+       <Box
+        display="flex"
+        flexDirection="column"
+        justifyContent="start"
+        alignItems="start"
+        paddingLeft={"10vw"}
+        paddingTop={"5vh"}
+      >
+        <Typography
+          variant="h4"
+          textAlign="center"
+          color="text.secondary"
+          marginBottom={5}
+        >
+          About us (coming soon)
+        </Typography>
+      </Box>
     </Box>
   );
 }
