@@ -1,11 +1,13 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Home from "./screens/Home";
 import Contact from "./screens/Contact";
 import Privacy from "./screens/Privacy";
 import Product from "./screens/Product";
 import About from "./screens/About";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 function App() {
   const theme = createTheme({
@@ -18,14 +20,16 @@ function App() {
   return (
     <Router>
       <ThemeProvider theme={theme}>
+        <Header />
         <Routes>
-          <Route path="/" element={<Home/>} />
+          <Route path="/" element={<Home />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/product" element={<Product />} />
           <Route path="/about" element={<About />} />
         </Routes>
-        </ThemeProvider>
+        <Footer />
+      </ThemeProvider>
     </Router>
   );
 }
