@@ -13,9 +13,8 @@ function Product() {
       <Box
         display="flex"
         flexDirection="column"
-        justifyContent="start"
-        alignItems="start"
-        paddingLeft={"10vw"}
+        justifyContent="center"
+        alignItems="center"
         paddingTop={"5vh"}
       >
         <Typography variant="h2" textAlign="center" marginTop={1}>
@@ -27,22 +26,21 @@ function Product() {
           color="text.secondary"
           marginBottom={5}
         >
-          A mobile app for users, and a development platform for businesses
+          A mobile app for users, and a development kit for businesses
         </Typography>
-      </Box>
       <Typography
           variant="h5"
-          paddingLeft={"10vw"}
           marginBottom={1}
         >
           Mobile app (coming soon to app stores)
         </Typography>
+        </Box>
       <Container
         sx={{
           display: "flex",
           flexDirection: "row",
           justifyContent: "space-evenly",
-          marginTop: 1,
+          marginTop: 2,
           marginBottom: 5,
         }}
       >
@@ -63,20 +61,26 @@ function Product() {
           image={success}
         ></Card>
       </Container>
+      <Box
+        display="flex"
+        flexDirection="column"
+        justifyContent="center"
+        alignItems="center"
+        paddingTop={"5vh"}
+      >
       <Typography
           variant="h5"
-          paddingLeft={"10vw"}
           marginBottom={1}
         >
           SDK for businesses (under development)
         </Typography>
         <Typography
           variant="body1"
-          paddingLeft={"10vw"}
           marginBottom={10}
         >
           We are developing an SDK which will let businesses to easily add Get In as a sign in option on their website/service.
         </Typography>
+        </Box>
     </Box>
   );
 }

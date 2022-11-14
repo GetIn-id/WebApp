@@ -6,7 +6,7 @@ import Typography from "@mui/material/Typography";
 
 function MyCard({ title, subtitle, body, image }) {
   return (
-    <Card sx={{ minWidth: 275, maxWidth: 300 }}>
+    <Card sx={{ maxWidth: 300 }}>
       <CardContent>
         <Typography variant="h5" component="div">
           {title}
