@@ -3,28 +3,28 @@ import React from "react";
 
 function Contact() {
   return (
-    <Box minHeight={"80vh"}>
-      <Box
-        display="flex"
-        flexDirection="column"
-        justifyContent="center"
-        alignItems="center"
-        paddingTop={"5vh"}
-      >
-        <Typography variant="h2" marginTop={1}>
-          Contact
-        </Typography>
+    <Box
+      minHeight={"80vh"}
+      display="flex"
+      flexDirection="column"
+      justifyContent="start"
+      alignItems="center"
+      paddingTop={"5vh"}
+      maxWidth={"90vw"}
+    >
+      <Typography variant="h2" marginTop={1}>
+        Contact
+      </Typography>
 
-        <Typography variant="body1" marginBottom={1}>
-          You can get in contact with us on {" "}
-          <Link href="https://twitter.com/The__Grape">Twitter.</Link>
-        </Typography>
-        <Typography variant="body1" marginBottom={1}>
-          Or you can shoot us an email at thegrape1337@protonmail.com
-        </Typography>
-      </Box>
+      <Typography variant="body1" marginBottom={1}>
+        You can get in contact with us on{" "}
+        <Link href="https://twitter.com/The__Grape">Twitter.</Link>
+      </Typography>
+      <Typography variant="body1" marginBottom={1}>
+        Or you can shoot us an email at thegrape1337@protonmail.com
+      </Typography>
     </Box>
-  );
+  );  
 }
 
 export default Contact;

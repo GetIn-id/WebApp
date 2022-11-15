@@ -1,4 +1,4 @@
-import { Typography, Container, Link } from "@mui/material";
+import { Typography, Link, Grid } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
 import Card from "../components/Card";
@@ -10,55 +10,105 @@ const skarsh = require("../assets/skarsh.png");
 
 function About() {
   return (
-    <Box minHeight={"80vh"}>
+    <Box
+      minHeight={"80vh"}
+      display="flex"
+      flexDirection="column"
+      justifyContent="center"
+      alignItems="center"
+    >
       <Box
         display="flex"
         flexDirection="column"
         justifyContent="center"
         alignItems="center"
         paddingTop={"5vh"}
+        maxWidth={"90vw"}
       >
         <Typography variant="h2" marginTop={1}>
           About us
         </Typography>
 
         <Typography variant="body1" marginBottom={1}>
-          We are a team of four who came together to build in the {" "}
+          We are a team of four who came together to build in the{" "}
           <Link href="https://makers.bolt.fun/tournaments/1/overview">
             Legends of Lightning Tournament.
           </Link>
         </Typography>
       </Box>
-      <Container
+      <Grid
+        container
+        display="flex"
+        flexDirection="row"
+        justifyContent="center"
+        alignItems="center"
+        maxWidth={"80vw"}
         sx={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-between",
           marginTop: 5,
           marginBottom: 5,
         }}
       >
-        <Card
-          title="Maja Ring"
-          subtitle="Design and marketing"
-          image={maja}
-        ></Card>
-        <Card
-          title="Emergency Bread"
-          subtitle="Business development"
-          image={eb}
-        ></Card>
-        <Card
-          title="The Grape"
-          subtitle="Frontend development"
-          image={grape}
-        ></Card>
-        <Card
-          title="Skarsh"
-          subtitle="Backend development"
-          image={skarsh}
-        ></Card>
-      </Container>
+        <Grid
+          item
+          xs={12}
+          md={3}
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          marginTop={2}
+        >
+          <Card
+            title="Maja Ring"
+            subtitle="Design and marketing"
+            image={maja}
+          ></Card>
+        </Grid>
+        <Grid
+          item
+          xs={12}
+          md={3}
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          marginTop={2}
+        >
+          <Card
+            title="Emergency Bread"
+            subtitle="Business development"
+            image={eb}
+          ></Card>
+        </Grid>
+        <Grid
+          item
+          xs={12}
+          md={3}
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          marginTop={2}
+        >
+          <Card
+            title="The Grape"
+            subtitle="Frontend development"
+            image={grape}
+          ></Card>
+        </Grid>
+        <Grid
+          item
+          xs={12}
+          md={3}
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          marginTop={2}
+        >
+          <Card
+            title="Skarsh"
+            subtitle="Backend development"
+            image={skarsh}
+          ></Card>
+        </Grid>
+      </Grid>
     </Box>
   );
 }
