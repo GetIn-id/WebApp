@@ -1,4 +1,4 @@
-import { Box, Typography, Grid } from "@mui/material";
+import { Box, Typography, Grid, Link } from "@mui/material";
 import Card from "../components/Card";
 import React from "react";
 
@@ -13,7 +13,7 @@ function Product() {
       minHeight={"80vh"}
       display="flex"
       flexDirection="column"
-      justifyContent="center"
+      justifyContent="start"
       alignItems="center"
     >
       <Box
@@ -28,15 +28,17 @@ function Product() {
           Our Product
         </Typography>
         <Typography
-          variant="h4"
+          variant="body1"
           textAlign="center"
-          color="text.secondary"
           marginBottom={5}
         >
           A mobile app for users, and a development kit for businesses
         </Typography>
-        <Typography variant="h5" marginBottom={1}>
-          Mobile app (coming soon to app stores)
+        <Typography variant="h6" marginBottom={0}>
+          Mobile app available on {" "}
+          <Link href="https://apps.apple.com/app/get-in/id6444308828">Appstore</Link>
+          {" "} and {" "}
+          <Link href="https://play.google.com/store/apps/details?id=com.getin">Google Play</Link>
         </Typography>
       </Box>
       <Grid
@@ -47,7 +49,7 @@ function Product() {
         alignItems="center"
         maxWidth={"80vw"}
         sx={{
-          marginTop: 5,
+          marginTop: 0,
           marginBottom: 5,
         }}
       >
@@ -90,7 +92,7 @@ function Product() {
           alignItems="center"
           marginTop={2}
         >
-          <Card title="Step 3" subtitle="Verify sign in" image={auth}></Card>
+          <Card title="Step 3" subtitle="Verify" image={auth}></Card>
         </Grid>
         <Grid
           item
@@ -116,7 +118,7 @@ function Product() {
         paddingTop={"5vh"}
         maxWidth={"90vw"}
       >
-        <Typography variant="h5" marginBottom={1}>
+        <Typography variant="h6" marginBottom={1}>
           SDK for businesses (under development)
         </Typography>
         <Typography variant="body1" marginBottom={10}>

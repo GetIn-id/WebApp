@@ -9,9 +9,15 @@ function Contact() {
       flexDirection="column"
       justifyContent="start"
       alignItems="center"
-      paddingTop={"5vh"}
-      maxWidth={"90vw"}
     >
+            <Box
+        display="flex"
+        flexDirection="column"
+        justifyContent="center"
+        alignItems="center"
+        paddingTop={"5vh"}
+        maxWidth={"90vw"}
+      >
       <Typography variant="h2" marginTop={1}>
         Contact
       </Typography>
@@ -23,6 +29,7 @@ function Contact() {
       <Typography variant="body1" marginBottom={1}>
         Or you can shoot us an email at thegrape1337@protonmail.com
       </Typography>
+      </Box>
     </Box>
   );  
 }

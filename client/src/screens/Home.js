@@ -1,19 +1,30 @@
-import { Box, Typography, Button, Modal, Link, Grid } from "@mui/material";
+import { Box, Typography, Button, Modal, Grid } from "@mui/material";
 import Card from "../components/Card";
 import React, { useState } from "react";
-
+import AppleIcon from "@mui/icons-material/Apple";
+import ShopIcon from "@mui/icons-material/Shop";
 //const logo = require("../assets/logo_black.png");
 
 function Home() {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const navigateApple = () => {
+    window.location.href = "https://apps.apple.com/app/get-in/id6444308828";
+  };
+
+  const navigateGoogle = () => {
+    window.location.href =
+      "https://play.google.com/store/apps/details?id=com.getin";
+  };
+
   return (
     <Box
       minHeight={"80vh"}
       display="flex"
       flexDirection="column"
-      justifyContent="center"
+      justifyContent="start"
       alignItems="center"
     >
       <Box
@@ -33,7 +44,7 @@ function Home() {
           Get In
         </Typography>
         <Typography
-          variant="h4"
+          variant="h5"
           textAlign="center"
           color="text.secondary"
           marginBottom={5}
@@ -111,15 +122,31 @@ function Home() {
       <Modal open={open} onClose={handleClose}>
         <Box sx={style}>
           <Typography variant="h6" component="h2">
-            Coming soon
+            Get our app
           </Typography>
-          <Typography sx={{ mt: 2 }}>
-            Our app is not yet published on app stores, but you can test the
-            beta on Iphone here:
-          </Typography>
-          <Link href="https://testflight.apple.com/join/B54EIjAh">
-            Beta test
-          </Link>
+          <Typography sx={{ mt: 2 }}>Choose your platform</Typography>
+          <Box
+            marginTop={1}
+            width="80%"
+            display="flex"
+            flexDirection="row"
+            justifyContent="space-between"
+          >
+            <Button
+              variant="outlined"
+              startIcon={<AppleIcon />}
+              onClick={navigateApple}
+            >
+              Appstore
+            </Button>
+            <Button
+              variant="outlined"
+              startIcon={<ShopIcon />}
+              onClick={navigateGoogle}
+            >
+              Google Play
+            </Button>
+          </Box>
         </Box>
       </Modal>
     </Box>

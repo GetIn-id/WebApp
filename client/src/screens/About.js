@@ -14,7 +14,7 @@ function About() {
       minHeight={"80vh"}
       display="flex"
       flexDirection="column"
-      justifyContent="center"
+      justifyContent="start"
       alignItems="center"
     >
       <Box
