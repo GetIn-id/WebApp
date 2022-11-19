@@ -41,21 +41,20 @@ function Home() {
           style={{ maxWidth: 300, padding: 10, cursor: "pointer" }}
         /> */}
         <Typography variant="h2" textAlign="center" margin={1}>
-          Get In
+        Get In
         </Typography>
         <Typography
-          variant="h5"
+          variant="body1"
           textAlign="center"
-          color="text.secondary"
           marginBottom={5}
         >
-          Smooth, Safe and Effortless sign in
+          Passwords are in the past!
         </Typography>
         <Button
           variant="contained"
           color="primary"
           textColor="white"
-          style={{ color: "white", fontWeight: "bold" }}
+          style={{ color: "white", fontWeight: "bold"}}
           onClick={handleOpen}
         >
           Download
