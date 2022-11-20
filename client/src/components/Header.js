@@ -189,7 +189,7 @@ function Header() {
                 alignItems="center"
               >
                 <Button
-                  onClick={navigateLogin}
+                  onClick={setOpen}
                   variant="contained"
                   color="primary"
                   style={{ color: "white", fontWeight: "bold" }}
