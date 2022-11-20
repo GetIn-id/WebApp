@@ -35,6 +35,10 @@ function Header() {
     navigate("/about");
   };
 
+    const navigateLogin = () => {
+    window.location.replace("https://auth-server-kmpjm4wydq-ew.a.run.app/")
+  };
+
   return (
     <Box>
       <AppBar
@@ -185,7 +189,7 @@ function Header() {
                 alignItems="center"
               >
                 <Button
-                  onClick={handleOpen}
+                  onClick={navigateLogin}
                   variant="contained"
                   color="primary"
                   style={{ color: "white", fontWeight: "bold" }}
