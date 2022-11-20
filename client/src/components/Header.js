@@ -36,7 +36,7 @@ function Header() {
   };
 
     const navigateLogin = () => {
-    window.location.replace("https://auth-server-kmpjm4wydq-ew.a.run.app/")
+    window.location.replace("http://auth.getin.id")
   };
 
   return (
