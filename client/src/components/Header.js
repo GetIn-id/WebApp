@@ -1,4 +1,4 @@
-import * as React from "react";
+import { useState, useEffect } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -8,16 +8,28 @@ import Modal from "@mui/material/Modal";
 import { useNavigate } from "react-router-dom";
 import { Grid, useMediaQuery, useTheme } from "@mui/material";
 import DrawerComponent from "./Drawer";
+import Axios from "axios";
 
 const logo = require("../assets/GetIn2.2.png");
 
 function Header() {
-  const [open, setOpen] = React.useState(false);
+  const [user, setUser] = useState(null);
+  const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   let navigate = useNavigate();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+
+  useEffect(() => {
+    Axios({
+      method: "GET",
+      withCredentials: true,
+      url: "https://auth.getin.id/user",
+    }).then((res) => {
+      res.data.id ? setUser(res.data.id) : setUser(null);
+    });
+  });
 
   const navigateHome = () => {
     navigate("/");
@@ -35,8 +47,18 @@ function Header() {
     navigate("/about");
   };
 
-    const navigateLogin = () => {
-    window.location.replace("http://auth.getin.id")
+  const navigateLogin = () => {
+    window.location.replace("https://auth.getin.id/login");
+  };
+
+  const navigateLogout = () => {
+    Axios({
+      method: "GET",
+      withCredentials: true,
+      url: "https://auth.getin.id/logout",
+    }).then((res) => {
+      setUser(null);
+    });
   };
 
   return (
@@ -188,14 +210,28 @@ function Header() {
                 justifyContent="center"
                 alignItems="center"
               >
-                <Button
-                  onClick={setOpen}
-                  variant="contained"
-                  color="primary"
-                  style={{ color: "white", fontWeight: "bold" }}
-                >
-                  Try it
-                </Button>
+                {user == null ? (
+                  <Button
+                    onClick={navigateLogin}
+                    variant="contained"
+                    color="primary"
+                    style={{ color: "white", fontWeight: "bold" }}
+                  >
+                    Try it
+                  </Button>
+                ) : (
+                  <>
+                    <Button
+                      onClick={navigateLogout}
+                      variant="contained"
+                      color="primary"
+                      style={{ color: "white", fontWeight: "bold" }}
+                    >
+                     Log Out
+                    </Button>
+                    <Typography>Logged in as: {user}</Typography>
+                  </>
+                )}
               </Grid>
             </Grid>
           )}
