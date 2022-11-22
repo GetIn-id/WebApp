@@ -4,7 +4,6 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import Modal from "@mui/material/Modal";
 import { useNavigate } from "react-router-dom";
 import { Grid, useMediaQuery, useTheme } from "@mui/material";
 import DrawerComponent from "./Drawer";
@@ -14,9 +13,6 @@ const logo = require("../assets/GetIn2.2.png");
 
 function Header() {
   const [user, setUser] = useState(null);
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
   let navigate = useNavigate();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
@@ -110,14 +106,25 @@ function Header() {
                 justifyContent="center"
                 alignItems="center"
               >
-                <Button
-                  onClick={handleOpen}
-                  variant="contained"
-                  color="primary"
-                  style={{ color: "white", fontWeight: "bold" }}
-                >
-                  Try it
-                </Button>
+                {user == null ? (
+                  <Button
+                    onClick={navigateLogin}
+                    variant="contained"
+                    color="primary"
+                    style={{ color: "white", fontWeight: "bold" }}
+                  >
+                    Try it
+                  </Button>
+                ) : (
+                  <Button
+                    onClick={navigateLogout}
+                    variant="contained"
+                    color="primary"
+                    style={{ color: "white", fontWeight: "bold" }}
+                  >
+                    Logout
+                  </Button>
+                )}
               </Grid>
             </Grid>
           ) : (
@@ -249,29 +256,8 @@ function Header() {
           )}
         </Toolbar>
       </AppBar>
-      <Modal open={open} onClose={handleClose}>
-        <Box sx={style}>
-          <Typography variant="h6" component="h2">
-            Coming soon
-          </Typography>
-          <Typography sx={{ mt: 2 }}>
-            This feature is under development.
-          </Typography>
-        </Box>
-      </Modal>
     </Box>
   );
 }
 
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  maxWidth: "80vw",
-  bgcolor: "background.paper",
-  boxShadow: 24,
-  p: 4,
-};
 export default Header;
