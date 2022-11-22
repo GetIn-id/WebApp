@@ -24,7 +24,7 @@ function Header() {
       url: "https://auth.getin.id/user",
     }).then((res) => {
       res.data.id ? setUser(res.data.id) : setUser(null);
-      console.log(user);
+      console.log(res.data);
     });
   });
 
