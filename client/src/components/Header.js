@@ -23,8 +23,12 @@ function Header() {
       withCredentials: true,
       url: "https://auth.getin.id/user",
     }).then((res) => {
-      res.data.id ? setUser(res.data.id) : setUser(null);
+      if(res.data.id) {
+      res.data.username ? setUser(res.data.username) : setUser(res.data.id);
       console.log(res.data);
+      } else {
+        setUser(null);
+      }
     });
   });
 
