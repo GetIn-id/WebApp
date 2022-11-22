@@ -150,7 +150,21 @@ function Header() {
                 justifyContent="center"
                 alignItems="center"
               >
-                <Typography variant="h7" component="div"></Typography>
+                {user == null ? (
+                  <Typography variant="h7" component="div"></Typography>
+                ) : (
+                  <Typography
+                    variant="h7"
+                    component="div"
+                    sx={{
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                    }}
+                  >
+                    {" "}
+                    Logged in as: {user}
+                  </Typography>
+                )}
               </Grid>
               <Grid
                 item
@@ -221,17 +235,14 @@ function Header() {
                     Try it
                   </Button>
                 ) : (
-                  <>
-                    <Button
-                      onClick={navigateLogout}
-                      variant="contained"
-                      color="primary"
-                      style={{ color: "white", fontWeight: "bold" }}
-                    >
-                     Log Out
-                    </Button>
-                    <Typography>Logged in as: {user}</Typography>
-                  </>
+                  <Button
+                    onClick={navigateLogout}
+                    variant="contained"
+                    color="primary"
+                    style={{ color: "white", fontWeight: "bold" }}
+                  >
+                    Log Out
+                  </Button>
                 )}
               </Grid>
             </Grid>
