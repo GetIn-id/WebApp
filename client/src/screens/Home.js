@@ -4,34 +4,17 @@ import {
   Button,
   Modal,
   Grid,
-  useMediaQuery,
-  useTheme,
 } from "@mui/material";
 import Card from "../components/Card";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import AppleIcon from "@mui/icons-material/Apple";
 import ShopIcon from "@mui/icons-material/Shop";
-import Axios from "axios";
 //const logo = require("../assets/logo_black.png");
 
 function Home() {
   const [open, setOpen] = useState(false);
-  const [user, setUser] = useState(null);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
-
-  useEffect(() => {
-    Axios({
-      method: "GET",
-      withCredentials: true,
-      url: "https://auth.getin.id/user",
-    }).then((res) => {
-      res.data.id ? setUser(res.data.id) : setUser(null);
-      console.log(user);
-    });
-  });
 
   const navigateApple = () => {
     window.location.href = "https://apps.apple.com/app/get-in/id6444308828";
@@ -63,28 +46,6 @@ function Home() {
           alt="logo"
           style={{ maxWidth: 300, padding: 10, cursor: "pointer" }}
         /> */}
-        {isMobile && user !== null ? (
-          <Typography
-            variant="h7"
-            component="div"
-            sx={{
-              overflow: "hidden",
-              textOverflow: "ellipsis",
-            }}
-          >
-            {" "}
-            Logged in as: {user}
-          </Typography>
-        ) : (
-          <Typography
-            variant="h7"
-            component="div"
-            sx={{
-              overflow: "hidden",
-              textOverflow: "ellipsis",
-            }}
-          ></Typography>
-        )}
         <Typography variant="h2" textAlign="center" margin={1}>
           Get In
         </Typography>

@@ -126,6 +126,29 @@ function Header() {
                   </Button>
                 )}
               </Grid>
+              {isMobile && user !== null ? (
+              <Typography
+                variant="h7"
+                component="div"
+                maxWidth={"70vw"}
+                sx={{
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                }}
+              >
+                {" "}
+                Logged in as: {user}
+              </Typography>
+            ) : (
+              <Typography
+                variant="h7"
+                component="div"
+                sx={{
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                }}
+              ></Typography>
+            )}
             </Grid>
           ) : (
             <Grid
