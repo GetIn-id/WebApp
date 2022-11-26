@@ -47,7 +47,7 @@ function Home() {
           style={{ maxWidth: 300, padding: 10, cursor: "pointer" }}
         /> */}
         <Typography variant="h2" textAlign="center" margin={1}>
-          Get Inn
+          Get In
         </Typography>
         <Typography variant="body1" textAlign="center" marginBottom={5}>
           Passwords are in the past!
