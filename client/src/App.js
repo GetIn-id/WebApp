@@ -7,7 +7,7 @@ import Privacy from "./screens/Privacy";
 import Product from "./screens/Product";
 import About from "./screens/About";
 import Header from "./components/Header";
-import Footer from "./components/Footer";
+import CustomFooter from "./components/CustomFooter";
 
 function App() {
   const theme = createTheme({
@@ -15,7 +15,15 @@ function App() {
       primary: {
         main: "#00e575",
       },
+      secondary: {
+        main: '#FFFFFF'
+      }
     },
+    typography: {
+      button: {
+        textTransform: "none"
+      }
+    }
   });
   return (
     <Router>
@@ -28,7 +36,8 @@ function App() {
           <Route path="/product" element={<Product />} />
           <Route path="/about" element={<About />} />
         </Routes>
-        <Footer />
+        {/* <Footer /> */}
+        <CustomFooter />
       </ThemeProvider>
     </Router>
   );

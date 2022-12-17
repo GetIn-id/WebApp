@@ -4,7 +4,7 @@ import React from "react";
 function Contact() {
   return (
     <Box
-      minHeight={"80vh"}
+      minHeight={"85vh"}
       display="flex"
       flexDirection="column"
       justifyContent="start"

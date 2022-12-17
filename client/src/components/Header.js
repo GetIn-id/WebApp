@@ -9,7 +9,7 @@ import { Grid, useMediaQuery, useTheme } from "@mui/material";
 import DrawerComponent from "./Drawer";
 import Axios from "axios";
 
-const logo = require("../assets/GetIn2.2.png");
+const logo = require("../assets/logoWhite.png");
 
 function Header() {
   const [user, setUser] = useState(null);
@@ -66,10 +66,9 @@ function Header() {
     <Box>
       <AppBar
         position="static"
-        color="transparent"
+        color="primary"
         elevation={0}
-        width={"100vw"}
-        height={"10vh"}
+        width={"100%"}
       >
         <Toolbar>
           {isMobile ? (
@@ -114,8 +113,8 @@ function Header() {
                   <Button
                     onClick={navigateLogin}
                     variant="contained"
-                    color="primary"
-                    style={{ color: "white", fontWeight: "bold" }}
+                    color="secondary"
+                    style={{ color: "black", fontWeight: "bold" }}
                   >
                     Try it
                   </Button>
@@ -123,8 +122,8 @@ function Header() {
                   <Button
                     onClick={navigateLogout}
                     variant="contained"
-                    color="primary"
-                    style={{ color: "white", fontWeight: "bold" }}
+                    color="secondary"
+                    style={{ color: "black", fontWeight: "bold" }}
                   >
                     Logout
                   </Button>
@@ -173,7 +172,7 @@ function Header() {
                   src={logo}
                   alt="logo"
                   onClick={navigateHome}
-                  style={{ marginTop: 10, maxWidth: 130, cursor: "pointer" }}
+                  style={{ marginTop: 1, maxWidth: 130, cursor: "pointer" }}
                 />
               </Grid>
               <Grid
@@ -212,7 +211,7 @@ function Header() {
                   variant="h7"
                   onClick={navigateProduct}
                   component="div"
-                  style={{ cursor: "pointer" }}
+                  style={{ cursor: "pointer", color: "white", fontWeight: "bold" }}
                 >
                   Product
                 </Typography>
@@ -229,7 +228,7 @@ function Header() {
                   variant="h7"
                   onClick={navigateAbout}
                   component="div"
-                  style={{ cursor: "pointer" }}
+                  style={{ cursor: "pointer", color: "white", fontWeight: "bold" }}
                 >
                   About us
                 </Typography>
@@ -246,7 +245,7 @@ function Header() {
                   variant="h7"
                   onClick={navigateContact}
                   component="div"
-                  style={{ cursor: "pointer" }}
+                  style={{ cursor: "pointer", color: "white", fontWeight: "bold" }}
                 >
                   Contact
                 </Typography>
@@ -263,8 +262,8 @@ function Header() {
                   <Button
                     onClick={navigateLogin}
                     variant="contained"
-                    color="primary"
-                    style={{ color: "white", fontWeight: "bold" }}
+                    color="secondary"
+                    style={{ color: "black", fontWeight: "bold" }}
                   >
                     Try it
                   </Button>
@@ -272,8 +271,8 @@ function Header() {
                   <Button
                     onClick={navigateLogout}
                     variant="contained"
-                    color="primary"
-                    style={{ color: "white", fontWeight: "bold" }}
+                    color="secondary"
+                    style={{ color: "black", fontWeight: "bold" }}
                   >
                     Log Out
                   </Button>

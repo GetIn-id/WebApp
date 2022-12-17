@@ -1,169 +1,235 @@
-import {
-  Box,
-  Typography,
-  Button,
-  Modal,
-  Grid,
-} from "@mui/material";
-import Card from "../components/Card";
+import { Box, Typography, Button, Grid } from "@mui/material";
 import React, { useState } from "react";
-import AppleIcon from "@mui/icons-material/Apple";
-import ShopIcon from "@mui/icons-material/Shop";
-//const logo = require("../assets/logo_black.png");
+import { useNavigate } from "react-router-dom";
+import DownloadModal from "../components/DownloadModal";
+import backgroundVideo from "../assets/GetIn.mp4";
+import landingImage from "../assets/landing.png";
+import LockOpenIcon from "@mui/icons-material/LockOpen";
+import PersonAddAltIcon from "@mui/icons-material/PersonAddAlt";
+import PhonelinkLockIcon from "@mui/icons-material/PhonelinkLock";
 
 function Home() {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const navigateApple = () => {
-    window.location.href = "https://apps.apple.com/app/get-in/id6444308828";
+  let navigate = useNavigate();
+
+  const navigateProduct = () => {
+    navigate("/product");
   };
 
-  const navigateGoogle = () => {
-    window.location.href =
-      "https://play.google.com/store/apps/details?id=com.getin";
-  };
 
   return (
-    <Box
-      minHeight={"80vh"}
-      display="flex"
-      flexDirection="column"
-      justifyContent="start"
-      alignItems="center"
-    >
+    <div>
+      <div className="videoMain">
+        <div className="videoOverlay" />
+        <video
+          autoPlay
+          loop
+          muted
+          styles={{ position: "fixed" }}
+          src={backgroundVideo}
+        />
+        <div className="videoContent">
+          <Typography
+            variant="h3"
+            textAlign="center"
+            marginBottom={5}
+            style={{ color: "white", fontWeight: "bold" }}
+          >
+            Passwords are in the past!
+          </Typography>
+          <Button
+            variant="contained"
+            color="primary"
+            sx={{ pt: 2, pb: 2, pl: 5, pr: 5 }}
+            style={{ color: "white", fontWeight: "bold", fontSize: 20 }}
+            onClick={handleOpen}
+          >
+            Download the Get In app
+          </Button>
+        </div>
+      </div>
       <Box
+        minHeight={"80vh"}
+        display="flex"
+        flexDirection="column"
+        justifyContent="start"
+        alignItems="center"
+      >
+        <Grid
+          container
+          display="flex"
+          flexDirection="row"
+          justifyContent="center"
+          alignItems="center"
+          maxWidth={"80vw"}
+          sx={{
+            marginTop: 20,
+            marginBottom: 5,
+          }}
+        >
+          <Grid item xs={12} md={4} display="flex" direction="column">
+            <Typography variant="h4" marginBottom={3} fontWeight="bold">
+              The smarter way to login
+            </Typography>
+            <Typography variant="body1" marginBottom={8}>
+              Login to websites or apps with just a tap on your phone. Get In
+              removes the need for passwords, which makes login easier and more
+              secure.
+            </Typography>
+            <Button
+              variant="outlined"
+              color="primary"
+              style={{
+                color: "black",
+                fontWeight: "bold",
+                fontSize: 20,
+                maxWidth: 300,
+              }}
+              sx={{ pt: 3, pb: 3, pl: 5, pr: 5 }}
+              onClick={navigateProduct}
+            >
+              How it works
+            </Button>
+          </Grid>
+          <Grid
+            item
+            xs={12}
+            md={4}
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            marginTop={2}
+          >
+            <img src={landingImage} alt="app" style={{ maxHeight: 500 }} />
+          </Grid>
+        </Grid>
+      </Box>
+      <Box
+        minHeight={"80vh"}
         display="flex"
         flexDirection="column"
         justifyContent="center"
         alignItems="center"
-        width="70vw"
-        paddingTop={"5vh"}
       >
-        {/* <img
-          src={logo}
-          alt="logo"
-          style={{ maxWidth: 300, padding: 10, cursor: "pointer" }}
-        /> */}
-        <Typography variant="h2" textAlign="center" margin={1}>
-          Get In
+        <Typography
+          variant="h3"
+          fontWeight="bold"
+          marginTop={8}
+          maxWidth={500}
+          inline
+          align="center"
+        >
+          Take control of your digital identity
         </Typography>
-        <Typography variant="body1" textAlign="center" marginBottom={5}>
-          Passwords are in the past!
-        </Typography>
-        <Button
-          variant="contained"
-          color="primary"
-          textColor="white"
-          style={{ color: "white", fontWeight: "bold" }}
-          onClick={handleOpen}
-        >
-          Download
-        </Button>
-      </Box>
-      <Grid
-        container
-        display="flex"
-        flexDirection="row"
-        justifyContent="center"
-        alignItems="center"
-        maxWidth={"80vw"}
-        sx={{
-          marginTop: 5,
-          marginBottom: 5,
-        }}
-      >
         <Grid
-          item
-          xs={12}
-          md={4}
+          container
           display="flex"
-          justifyContent="center"
+          flexDirection="row"
+          justifyContent="space-between"
           alignItems="center"
-          marginTop={2}
+          maxWidth={"50vw"}
+          sx={{
+            marginTop: 17,
+            marginBottom: 20,
+          }}
         >
-          <Card
-            title="Smooth"
-            subtitle="no registration"
-            body="You don't need to register when signing in to a website or service with Get In. It works the same no matter if it's the first time you sign in or the hundreth time. No more time consuming registration processes."
-          ></Card>
-        </Grid>
-        <Grid
-          item
-          xs={12}
-          md={4}
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          marginTop={2}
-        >
-          <Card
-            title="Safe"
-            subtitle="secured by cryptogrophy"
-            body="Get in use secure and thoroughly tested cryptogrophy. It's the same protocol as Bitcoin uses. Additionally, all your senstive data is stored on your device, and not on any cloud or centralized servers. No more getting your personal info exploited."
-          ></Card>
-        </Grid>
-        <Grid
-          item
-          xs={12}
-          md={4}
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          marginTop={2}
-        >
-          <Card
-            title="Effortless"
-            subtitle="no passwords or emails"
-            body="With Get In you don't need to come up with unique and secure passwords. You don't need to remember which email/password combination you used on a certain site. No more resetting your passwords."
-          ></Card>
-        </Grid>
-      </Grid>
-      <Modal open={open} onClose={handleClose}>
-        <Box sx={style}>
-          <Typography variant="h6" component="h2">
-            Get our app
-          </Typography>
-          <Typography sx={{ mt: 2 }}>Choose your platform</Typography>
-          <Box
-            marginTop={1}
-            width="80%"
+          <Grid
+            item
+            xs={12}
+            md={3}
             display="flex"
-            flexDirection="row"
-            justifyContent="space-between"
+            direction="column"
+            justifyContent="center"
+            alignItems="center"
           >
-            <Button
-              variant="outlined"
-              startIcon={<AppleIcon />}
-              onClick={navigateApple}
+            <LockOpenIcon
+              color="primary"
+              sx={{
+                fontSize: "8rem",
+                marginBottom: 7,
+              }}
+            />
+            <Typography
+              variant="h5"
+              marginBottom={3}
+              fontWeight="bold"
+              inline
+              align="center"
             >
-              Appstore
-            </Button>
-            <Button
-              variant="outlined"
-              startIcon={<ShopIcon />}
-              onClick={navigateGoogle}
+              We offer an easy and secure login
+            </Typography>
+            <Typography variant="body1" marginBottom={8} inline align="center">
+              When there's no passwords, there's no need to remember them or be
+              afraid to lose them.
+            </Typography>
+          </Grid>
+          <Grid
+            item
+            xs={12}
+            md={3}
+            display="flex"
+            direction="column"
+            justifyContent="center"
+            alignItems="center"
+          >
+            <PersonAddAltIcon
+              color="primary"
+              sx={{
+                fontSize: "8rem",
+                marginBottom: 7,
+              }}
+            />
+            <Typography
+              variant="h5"
+              marginBottom={3}
+              fontWeight="bold"
+              inline
+              align="center"
             >
-              Google Play
-            </Button>
-          </Box>
-        </Box>
-      </Modal>
-    </Box>
+              Simplified registration
+            </Typography>
+            <Typography variant="body1" marginBottom={8} inline align="center">
+              Increase user growth by simplifying the registration process
+            </Typography>
+          </Grid>
+          <Grid
+            item
+            xs={12}
+            md={3}
+            display="flex"
+            direction="column"
+            justifyContent="center"
+            alignItems="center"
+          >
+            <PhonelinkLockIcon
+              color="primary"
+              sx={{
+                fontSize: "8rem",
+                marginBottom: 7,
+              }}
+            />
+            <Typography
+              variant="h5"
+              marginBottom={3}
+              fontWeight="bold"
+              inline
+              align="center"
+            >
+              Manage your digital identity
+            </Typography>
+            <Typography variant="body1" marginBottom={8} inline align="center">
+              We build the tools which allow people all over the world to manage
+              their digital identities
+            </Typography>
+          </Grid>
+        </Grid>
+      </Box>
+      <DownloadModal open={open} handleClose={handleClose} />
+    </div>
   );
 }
-
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  maxWidth: "80vw",
-  bgcolor: "background.paper",
-  boxShadow: 24,
-  p: 4,
-};
 
 export default Home;

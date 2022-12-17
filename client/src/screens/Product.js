@@ -1,6 +1,6 @@
 import { Box, Typography, Grid, Link } from "@mui/material";
 import Card from "../components/Card";
-import React from "react";
+import React, {useEffect} from "react";
 
 const landing = require("../assets/landing.png");
 const camera = require("../assets/camera.png");
@@ -8,6 +8,9 @@ const auth = require("../assets/auth.png");
 const success = require("../assets/success.png");
 
 function Product() {
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   return (
     <Box
       minHeight={"80vh"}
