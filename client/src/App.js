@@ -8,6 +8,7 @@ import Product from "./screens/Product";
 import About from "./screens/About";
 import Header from "./components/Header";
 import CustomFooter from "./components/CustomFooter";
+import Business from "./screens/Business";
 
 function App() {
   const theme = createTheme({
@@ -35,8 +36,8 @@ function App() {
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/product" element={<Product />} />
           <Route path="/about" element={<About />} />
+          <Route path="/business" element={<Business />} />
         </Routes>
-        {/* <Footer /> */}
         <CustomFooter />
       </ThemeProvider>
     </Router>

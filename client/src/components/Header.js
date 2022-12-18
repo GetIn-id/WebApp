@@ -1,17 +1,30 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
+import Popover from "@mui/material/Popover";
 import { useNavigate } from "react-router-dom";
 import { Grid, useMediaQuery, useTheme } from "@mui/material";
 import DrawerComponent from "./Drawer";
 import Axios from "axios";
+import PopoverContent from "./PopoverContent";
 
 const logo = require("../assets/logoWhite.png");
 
 function Header() {
+  const [openedPopover, setOpenedPopover] = useState(false);
+  const popoverAnchor = useRef(null);
+
+  const popoverEnter = () => {
+    setOpenedPopover(true);
+  };
+
+  const popoverLeave = () => {
+    setOpenedPopover(false);
+  };
+
   const [user, setUser] = useState(null);
   let navigate = useNavigate();
   const theme = useTheme();
@@ -23,9 +36,9 @@ function Header() {
       withCredentials: true,
       url: "https://auth.getin.id/user",
     }).then((res) => {
-      if(res.data.id) {
-      res.data.username ? setUser(res.data.username) : setUser(res.data.id);
-      console.log(res.data);
+      if (res.data.id) {
+        res.data.username ? setUser(res.data.username) : setUser(res.data.id);
+        console.log(res.data);
       } else {
         setUser(null);
       }
@@ -39,11 +52,7 @@ function Header() {
   const navigateContact = () => {
     navigate("/contact");
   };
-
-  const navigateProduct = () => {
-    navigate("/product");
-  };
-
+  
   const navigateAbout = () => {
     navigate("/about");
   };
@@ -64,12 +73,7 @@ function Header() {
 
   return (
     <Box>
-      <AppBar
-        position="static"
-        color="primary"
-        elevation={0}
-        width={"100%"}
-      >
+      <AppBar position="static" color="primary" elevation={0} width={"100%"}>
         <Toolbar>
           {isMobile ? (
             <Grid
@@ -130,28 +134,28 @@ function Header() {
                 )}
               </Grid>
               {isMobile && user !== null ? (
-              <Typography
-                variant="h7"
-                component="div"
-                maxWidth={"70vw"}
-                sx={{
-                  overflow: "hidden",
-                  textOverflow: "ellipsis",
-                }}
-              >
-                {" "}
-                Logged in as: {user}
-              </Typography>
-            ) : (
-              <Typography
-                variant="h7"
-                component="div"
-                sx={{
-                  overflow: "hidden",
-                  textOverflow: "ellipsis",
-                }}
-              ></Typography>
-            )}
+                <Typography
+                  variant="h7"
+                  component="div"
+                  maxWidth={"70vw"}
+                  sx={{
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                  }}
+                >
+                  {" "}
+                  Logged in as: {user}
+                </Typography>
+              ) : (
+                <Typography
+                  variant="h7"
+                  component="div"
+                  sx={{
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                  }}
+                ></Typography>
+              )}
             </Grid>
           ) : (
             <Grid
@@ -209,9 +213,16 @@ function Header() {
               >
                 <Typography
                   variant="h7"
-                  onClick={navigateProduct}
                   component="div"
-                  style={{ cursor: "pointer", color: "white", fontWeight: "bold" }}
+                  style={{
+                    cursor: "pointer",
+                    color: "white",
+                    fontWeight: "bold",
+                  }}
+                  aria-haspopup="true"
+                  onMouseEnter={popoverEnter}
+                  onMouseLeave={popoverLeave}
+                  ref={popoverAnchor}
                 >
                   Product
                 </Typography>
@@ -228,7 +239,11 @@ function Header() {
                   variant="h7"
                   onClick={navigateAbout}
                   component="div"
-                  style={{ cursor: "pointer", color: "white", fontWeight: "bold" }}
+                  style={{
+                    cursor: "pointer",
+                    color: "white",
+                    fontWeight: "bold",
+                  }}
                 >
                   About us
                 </Typography>
@@ -245,7 +260,11 @@ function Header() {
                   variant="h7"
                   onClick={navigateContact}
                   component="div"
-                  style={{ cursor: "pointer", color: "white", fontWeight: "bold" }}
+                  style={{
+                    cursor: "pointer",
+                    color: "white",
+                    fontWeight: "bold",
+                  }}
                 >
                   Contact
                 </Typography>
@@ -282,6 +301,26 @@ function Header() {
           )}
         </Toolbar>
       </AppBar>
+      <Popover
+        open={openedPopover}
+        anchorEl={popoverAnchor.current}
+        sx={{
+          pointerEvents: "none",
+        }}
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "center",
+        }}
+        transformOrigin={{
+          vertical: "top",
+          horizontal: "center",
+        }}
+        PaperProps={{ onMouseEnter: popoverEnter, onMouseLeave: popoverLeave }}
+      >
+        <Box sx={{ pointerEvents: "auto" }}>
+          <PopoverContent />
+        </Box>
+      </Popover>
     </Box>
   );
 }

@@ -1,135 +1,210 @@
-import { Box, Typography, Grid, Link } from "@mui/material";
-import Card from "../components/Card";
-import React, {useEffect} from "react";
-
-const landing = require("../assets/landing.png");
-const camera = require("../assets/camera.png");
-const auth = require("../assets/auth.png");
-const success = require("../assets/success.png");
+import { Box, Typography, Grid, Button } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import DownloadModal from "../components/DownloadModal";
+import landing from "../assets/landing.png";
+import camera from "../assets/camera.png";
+import auth from "../assets/auth.png";
+import success from "../assets/success.png";
 
 function Product() {
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
+    window.scrollTo(0, 0);
+  }, []);
   return (
-    <Box
-      minHeight={"80vh"}
-      display="flex"
-      flexDirection="column"
-      justifyContent="start"
-      alignItems="center"
-    >
+    <div>
       <Box
+        minHeight={"50vh"}
+        display="flex"
+        flexDirection="column"
+        justifyContent="start"
+        alignItems="center"
+      >
+        <Box
+          display="flex"
+          flexDirection="column"
+          justifyContent="center"
+          alignItems="center"
+          maxWidth={"90vw"}
+        >
+          <Typography
+            variant="h2"
+            textAlign="center"
+            marginTop={20}
+            marginBottom={3}
+          >
+            How it works
+          </Typography>
+          <Typography variant="body1" textAlign="center" marginBottom={5}>
+            Your new login experience begins with the Get In app.
+          </Typography>
+          <Button
+            variant="contained"
+            color="primary"
+            sx={{ pt: 2, pb: 2, pl: 5, pr: 5 }}
+            style={{ color: "white", fontWeight: "bold", fontSize: 20 }}
+            onClick={handleOpen}
+          >
+            Get the app
+          </Button>
+        </Box>
+        <DownloadModal open={open} handleClose={handleClose} />
+      </Box>
+      <Box
+        minHeight={"60vh"}
         display="flex"
         flexDirection="column"
         justifyContent="center"
         alignItems="center"
-        paddingTop={"5vh"}
-        maxWidth={"90vw"}
       >
-        <Typography variant="h2" textAlign="center" marginTop={1}>
-          Our Product
-        </Typography>
-        <Typography
-          variant="body1"
-          textAlign="center"
-          marginBottom={5}
+        <Grid
+          container
+          display="flex"
+          flexDirection="row"
+          justifyContent="center"
+          alignItems="center"
+          maxWidth={"80vw"}
+          sx={{
+            marginTop: 5,
+            marginBottom: 5,
+          }}
         >
-          A mobile app for users, and a development kit for businesses
-        </Typography>
-        <Typography variant="h6" marginBottom={0}>
-          Mobile app available on {" "}
-          <Link href="https://apps.apple.com/app/get-in/id6444308828">Appstore</Link>
-          {" "} and {" "}
-          <Link href="https://play.google.com/store/apps/details?id=com.getin">Google Play</Link>
-        </Typography>
+          <Grid item xs={12} md={4} display="flex" direction="column">
+            <Typography variant="h4" marginBottom={3} fontWeight="bold">
+              1. Open Get In on your phone
+            </Typography>
+            <Typography variant="body1" marginBottom={8}>
+              This is the landing page, no matter if you open the app for the first time or the 100th time.
+              You don't need to register or go through any other setup steps.
+              The cryptographic keys which are used to login are generated
+              automatically behind the scenes. They are stored on your device
+              and never shared with anyone else.
+            </Typography>
+          </Grid>
+          <Grid
+            item
+            xs={12}
+            md={4}
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            marginTop={2}
+          >
+            <img src={landing} alt="app" style={{ maxHeight: 500 }} />
+          </Grid>
+        </Grid>
+        <Grid
+          container
+          display="flex"
+          flexDirection="row"
+          justifyContent="center"
+          alignItems="center"
+          maxWidth={"80vw"}
+          sx={{
+            marginTop: 5,
+            marginBottom: 5,
+          }}
+        >
+          <Grid
+            item
+            xs={12}
+            md={4}
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            marginTop={2}
+          >
+            <img src={camera} alt="app" style={{ maxHeight: 500 }} />
+          </Grid>
+          <Grid item xs={12} md={4} display="flex" direction="column">
+            <Typography variant="h4" marginBottom={3} fontWeight="bold">
+              2. Press "QR code"
+            </Typography>
+            <Typography variant="body1" marginBottom={8}>
+              This opens up the camera on your phone. Use it to scan a QR code
+              on the website where you want to login. If you want to login on
+              your phone, just tap on the QR code instead. You can test it
+              by pressing the "Try it" button on the top right of this
+              page.
+            </Typography>
+          </Grid>
+        </Grid>
+        <Grid
+          container
+          display="flex"
+          flexDirection="row"
+          justifyContent="center"
+          alignItems="center"
+          maxWidth={"80vw"}
+          sx={{
+            marginTop: 5,
+            marginBottom: 5,
+          }}
+        >
+          <Grid item xs={12} md={4} display="flex" direction="column">
+            <Typography variant="h4" marginBottom={3} fontWeight="bold">
+              3. Accept the login
+            </Typography>
+            <Typography variant="body1" marginBottom={8}>
+              When the QR code has been scanned, you are navigated to this
+              verification screen. Here you also have the option to share
+              username and email. If you enable this, your profile on the
+              website will automatically have this information about you when
+              you login for the first time - so you don't have to fill it in
+              manually. Press the "Get In" button to login, or press cancel if
+              you changed your mind.
+            </Typography>
+          </Grid>
+          <Grid
+            item
+            xs={12}
+            md={4}
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            marginTop={2}
+          >
+            <img src={auth} alt="app" style={{ maxHeight: 500 }} />
+          </Grid>
+        </Grid>
+        <Grid
+          container
+          display="flex"
+          flexDirection="row"
+          justifyContent="center"
+          alignItems="center"
+          maxWidth={"80vw"}
+          sx={{
+            marginTop: 5,
+            marginBottom: 10,
+          }}
+        >
+          <Grid
+            item
+            xs={12}
+            md={4}
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            marginTop={2}
+          >
+            <img src={success} alt="app" style={{ maxHeight: 500 }} />
+          </Grid>
+          <Grid item xs={12} md={4} display="flex" direction="column">
+            <Typography variant="h4" marginBottom={3} fontWeight="bold">
+              4. Success!
+            </Typography>
+            <Typography variant="body1" marginBottom={8}>
+              You are logged in! No passwords and no registration processes.
+              Passwords are in the past!
+            </Typography>
+          </Grid>
+        </Grid>
       </Box>
-      <Grid
-        container
-        display="flex"
-        flexDirection="row"
-        justifyContent="center"
-        alignItems="center"
-        maxWidth={"80vw"}
-        sx={{
-          marginTop: 0,
-          marginBottom: 5,
-        }}
-      >
-        <Grid
-          item
-          xs={12}
-          md={3}
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          marginTop={2}
-        >
-          <Card
-            title="Step 1"
-            subtitle="Open Get In on your phone"
-            image={landing}
-          ></Card>
-        </Grid>
-        <Grid
-          item
-          xs={12}
-          md={3}
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          marginTop={2}
-        >
-          <Card
-            title="Step 2"
-            subtitle="Scan QR code on the website"
-            image={camera}
-          ></Card>
-        </Grid>
-        <Grid
-          item
-          xs={12}
-          md={3}
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          marginTop={2}
-        >
-          <Card title="Step 3" subtitle="Verify" image={auth}></Card>
-        </Grid>
-        <Grid
-          item
-          xs={12}
-          md={3}
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          marginTop={2}
-        >
-          <Card
-            title="Step 4"
-            subtitle="You are signed in!"
-            image={success}
-          ></Card>
-        </Grid>
-      </Grid>
-      <Box
-        display="flex"
-        flexDirection="column"
-        justifyContent="center"
-        alignItems="center"
-        paddingTop={"5vh"}
-        maxWidth={"90vw"}
-      >
-        <Typography variant="h6" marginBottom={1}>
-          SDK for businesses (under development)
-        </Typography>
-        <Typography variant="body1" marginBottom={10}>
-          We are developing an SDK which will let businesses to easily add Get
-          In as a sign in option on their website/service.
-        </Typography>
-      </Box>
-    </Box>
+    </div>
   );
 }
 
