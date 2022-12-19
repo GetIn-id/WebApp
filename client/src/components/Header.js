@@ -52,7 +52,7 @@ function Header() {
   const navigateContact = () => {
     navigate("/contact");
   };
-  
+
   const navigateAbout = () => {
     navigate("/about");
   };
@@ -81,7 +81,7 @@ function Header() {
               display="flex"
               justifyContent="center"
               alignItems="center"
-              marginTop={2}
+              sx={{ pt: 2, pb: 2 }}
             >
               <Grid
                 item
@@ -265,6 +265,7 @@ function Header() {
                     color: "white",
                     fontWeight: "bold",
                   }}
+                  sx={{ pt: 4, pb: 4 }}
                 >
                   Contact
                 </Typography>
