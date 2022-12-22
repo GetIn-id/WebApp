@@ -47,7 +47,7 @@ function CustomFooter() {
                 Contact
               </Typography>
               <Typography variant="caption" color="initial" marginBottom={2}>
-                email: thegrape1337@protonmail.com
+                email: contact@getin.id
               </Typography>
             </Grid>
             <Grid

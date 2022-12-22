@@ -24,10 +24,10 @@ function Contact() {
 
       <Typography variant="body1" marginBottom={1}>
         You can get in contact with us on{" "}
-        <Link href="https://twitter.com/The__Grape">Twitter.</Link>
+        <Link href="https://twitter.com/Get__In">Twitter.</Link>
       </Typography>
       <Typography variant="body1" marginBottom={1}>
-        Or you can shoot us an email at thegrape1337@protonmail.com
+        Or you can shoot us an email at contact@getin.id
       </Typography>
       </Box>
     </Box>
