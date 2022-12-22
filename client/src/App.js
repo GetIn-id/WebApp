@@ -9,6 +9,7 @@ import About from "./screens/About";
 import Header from "./components/Header";
 import CustomFooter from "./components/CustomFooter";
 import Business from "./screens/Business";
+import FAQ from "./screens/FAQ";
 
 function App() {
   const theme = createTheme({
@@ -37,6 +38,7 @@ function App() {
           <Route path="/product" element={<Product />} />
           <Route path="/about" element={<About />} />
           <Route path="/business" element={<Business />} />
+          <Route path="/FAQ" element={<FAQ />} />
         </Routes>
         <CustomFooter />
       </ThemeProvider>

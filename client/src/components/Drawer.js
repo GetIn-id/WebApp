@@ -17,9 +17,9 @@ function DrawerComponent() {
     navigate("/");
   };
 
-  const navigateContact = () => {
+  const navigateFAQ = () => {
     setOpenDrawer(false);
-    navigate("/contact");
+    navigate("/FAQ");
   };
 
   const navigateProduct = () => {
@@ -120,11 +120,11 @@ function DrawerComponent() {
                 color: "white",
                 fontWeight: "bold",
               }}
-              onClick={navigateContact}
+              onClick={navigateFAQ}
               startIcon={<ContactPageIcon />}
               sx={{ minWidth: "40vw" }}
             >
-              Contact
+              FAQ
             </Button>
           </ListItem>
         </List>

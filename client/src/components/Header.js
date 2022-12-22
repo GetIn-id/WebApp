@@ -49,12 +49,12 @@ function Header() {
     navigate("/");
   };
 
-  const navigateContact = () => {
-    navigate("/contact");
-  };
-
   const navigateAbout = () => {
     navigate("/about");
+  };
+
+  const navigateFAQ = () => {
+    navigate("/FAQ");
   };
 
   const navigateLogin = () => {
@@ -258,7 +258,7 @@ function Header() {
               >
                 <Typography
                   variant="h7"
-                  onClick={navigateContact}
+                  onClick={navigateFAQ}
                   component="div"
                   style={{
                     cursor: "pointer",
@@ -267,7 +267,7 @@ function Header() {
                   }}
                   sx={{ pt: 4, pb: 4 }}
                 >
-                  Contact
+                  FAQ
                 </Typography>
               </Grid>
               <Grid

@@ -2,7 +2,6 @@ import { Typography, Grid, useMediaQuery, useTheme } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
 import Card from "../components/Card";
-import banner from "../assets/GreenBannerFat2.2.png";
 import login from "../assets/login.png";
 import vision from "../assets/vision.jpeg";
 import mission from "../assets/mission.png";
