@@ -11,7 +11,7 @@ import DrawerComponent from "./Drawer";
 import Axios from "axios";
 import PopoverContent from "./PopoverContent";
 
-const logo = require("../assets/logoWhite.png");
+const logo = require("../assets/Logo_white1.png");
 
 function Header() {
   const [openedPopover, setOpenedPopover] = useState(false);

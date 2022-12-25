@@ -2,7 +2,7 @@ import { Box, Typography, Button, Grid } from "@mui/material";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import DownloadModal from "../components/DownloadModal";
-import backgroundVideo from "../assets/GetIn.mp4";
+import backgroundVideo from "../assets/background.mp4";
 import landingImage from "../assets/landing.png";
 import LockOpenIcon from "@mui/icons-material/LockOpen";
 import PersonAddAltIcon from "@mui/icons-material/PersonAddAlt";
