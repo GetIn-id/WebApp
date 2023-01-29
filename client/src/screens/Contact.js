@@ -1,5 +1,6 @@
 import { Typography, Link, Box } from "@mui/material";
 import React from "react";
+import { NoComment } from "react-nocomment";
 
 function Contact() {
   return (
@@ -10,7 +11,7 @@ function Contact() {
       justifyContent="start"
       alignItems="center"
     >
-            <Box
+      <Box
         display="flex"
         flexDirection="column"
         justifyContent="center"
@@ -18,20 +19,29 @@ function Contact() {
         paddingTop={"5vh"}
         maxWidth={"90vw"}
       >
-      <Typography variant="h2" marginTop={1}>
-        Contact
-      </Typography>
+        <Typography variant="h2" marginTop={1}>
+          Contact
+        </Typography>
 
-      <Typography variant="body1" marginBottom={1}>
-        You can get in contact with us on{" "}
-        <Link href="https://twitter.com/Get__In">Twitter.</Link>
-      </Typography>
-      <Typography variant="body1" marginBottom={1}>
-        Or you can shoot us an email at contact@getin.id
-      </Typography>
+        <Typography variant="body1" marginBottom={1}>
+          You can get in contact with us on{" "}
+          <Link href="https://twitter.com/Get__In">Twitter.</Link>
+        </Typography>
+        <Typography variant="body1" marginBottom={1}>
+          Or you can shoot us an email at contact@getin.id
+        </Typography>
+        <NoComment
+          relays={[
+            "wss://nostr.drss.io",
+            "wss://nostr-relay.freeberty.net",
+            "wss://nostr.unknown.place",
+            "wss://nostr-relay.untethr.me",
+            "wss://relay.damus.io",
+          ]}
+        />
       </Box>
     </Box>
-  );  
+  );
 }
 
 export default Contact;
