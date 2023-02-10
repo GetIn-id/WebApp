@@ -1,13 +1,12 @@
-import { Typography, Link, Box, Button } from "@mui/material";
+import { Typography, Box, Button, TextField } from "@mui/material";
 import * as React from 'react';
 import { useEffect, useState } from 'react';
 import { useStatePersist } from 'use-state-persist';
 
-import { NoComment } from "react-nocomment";
 import { broadcastToRelay, Connect, connectToRelay, ConnectURI } from '@nostr-connect/connect';
 
 import { QRCodeSVG } from 'qrcode.react';
-import { getEventHash, getPublicKey, Event } from 'nostr-tools';
+import { getEventHash, getPublicKey } from 'nostr-tools';
 
 function Contact() {
   const secretKey = "5acff99d1ad3e1706360d213fd69203312d9b5e91a2d5f2e06100cc6f686e5b3";
@@ -24,6 +23,7 @@ const connectURI = new ConnectURI({
 const [pubkey, setPubkey] = useStatePersist('@pubkey', '');
 const [getPublicKeyReply, setGetPublicKeyReply] = useState('');
 const [eventWithSig, setEvent] = useState({});
+const [content, setContent] = useState("");
 
 useEffect(() => {
   (async () => {
@@ -68,11 +68,11 @@ const sendMessage = async () => {
       pubkey: pubkey,
       created_at: Math.floor(Date.now() / 1000),
       tags: [],
-      content: "Running Nostr Connect 🔌"
+      content: content
     };
     event.id = getEventHash(event)
     event.sig = await connect.signEvent(event);
-    const relay = await connectToRelay('wss://relay.damus.io');
+    const relay = await connectToRelay('wss://nos.lol');
     await broadcastToRelay(relay, event, true);
 
     setEvent(event);
@@ -98,13 +98,6 @@ const disconnect = async () => {
   setGetPublicKeyReply('');
 }
 
-const copyToClipboard = () => {
-  navigator.clipboard.writeText(connectURI.toString()).then(undefined,
-    function (err) {
-      console.error('Async: Could not copy text: ', err);
-    });
-}
-
   return (
     <Box
       minHeight={"85vh"}
@@ -127,17 +120,14 @@ const copyToClipboard = () => {
         <Typography variant="body1" marginBottom={1}>
          You can get in contact with us by commenting below!
         </Typography>
-        <NoComment
-          relays={[
-            "wss://nostr.drss.io",
-            "wss://nostr-relay.freeberty.net",
-            "wss://nostr.unknown.place",
-            "wss://nostr-relay.untethr.me",
-            "wss://relay.damus.io",
-          ]}
+        <TextField 
+        sx={{width: "30vw", marginTop: "15px", marginBottom: "10px"}}
+        label="Write your question here"
+        multiline
+        onChange={(e) => setContent(e.target.value)}
         />
-        <Typography>Nostr ID {getPublicKey(secretKey)}</Typography>
-        <Typography>Status {isConnected() ? '🟢 Connected' : '🔴 Disconnected'}</Typography>
+        <Typography>Nostr ID: {getPublicKey(secretKey)}</Typography>
+        <Typography>Status: {isConnected() ? '🟢 Connected' : '🔴 Disconnected'}</Typography>
           {
             isConnected() ? <Button onClick={disconnect}>Disconnect</Button>
             :
