@@ -95,13 +95,20 @@ function Contact() {
 
       setEvent(event);
       setAllEvents([event, ...allEvents]);
+      handleClose();
     } catch (error) {
       console.error(error);
     }
   };
 
+  const sendDummy = () => {
+    const event = `{"0": "0", "pubkey": "123456bhfdd", "created_at": "0", "kind": "1","tags": "[0]","content": "dummytest"}`;
+      setAllEvents([event, ...allEvents]);
+    handleClose();
+  };
+
   const isConnected = () => {
-    getPub();
+    //getPub();
     return pubkey.length > 0;
   };
 
@@ -117,6 +124,7 @@ function Contact() {
     setGetPublicKeyReply("");
   };
 
+  console.log(allEvents);
 
   return (
     <Box
@@ -157,7 +165,7 @@ function Contact() {
             <CircularProgress size={20} color="primary" />
           )}
         </Box>
-        {allEvents &&
+        {allEvents !== null &&
           allEvents.map((event) => (
             <Comment key={Math.floor(Math.random() * 10000)} event={event} />
           ))}
