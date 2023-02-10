@@ -3,11 +3,8 @@ import {
   Box,
   Button,
   TextField,
-  Grid,
-  Avatar,
-  Paper,
-  Divider,
   Modal,
+  CircularProgress,
 } from "@mui/material";
 import * as React from "react";
 import { useEffect, useState } from "react";
@@ -22,6 +19,7 @@ import {
 
 import { QRCodeSVG } from "qrcode.react";
 import { getEventHash, getPublicKey } from "nostr-tools";
+import Comment from "../components/Comment";
 
 function Contact() {
   const secretKey =
@@ -39,6 +37,7 @@ function Contact() {
   const [pubkey, setPubkey] = useStatePersist("@pubkey", "");
   const [getPublicKeyReply, setGetPublicKeyReply] = useState("");
   const [eventWithSig, setEvent] = useState({});
+  const [allEvents, setAllEvents] = useState(null);
   const [content, setContent] = useState("");
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -95,6 +94,7 @@ function Contact() {
       await broadcastToRelay(relay, event, true);
 
       setEvent(event);
+      setAllEvents([event, ...allEvents]);
     } catch (error) {
       console.error(error);
     }
@@ -116,6 +116,7 @@ function Contact() {
     setPubkey("");
     setGetPublicKeyReply("");
   };
+
 
   return (
     <Box
@@ -150,28 +151,17 @@ function Contact() {
         </Button>
       </Box>
       <h1>Comments</h1>
-      <Paper
-        style={{ padding: "40px 20px", marginBottom: "5vh", width: "50vw" }}
-      >
-        <Grid container wrap="nowrap" spacing={2}>
-          <Grid item>
-            <Avatar
-              alt="Remy Sharp"
-              src={"https://i.postimg.cc/rmzBHcm8/grape.webp"}
-            />
-          </Grid>
-          <Grid justifyContent="left" item xs zeroMinWidth>
-            <h4 style={{ margin: 0, textAlign: "left" }}>The Grape</h4>
-            <p style={{ textAlign: "left" }}>
-              {JSON.stringify(eventWithSig, null, 2)}{" "}
-            </p>
-            <p style={{ textAlign: "left", color: "gray" }}>
-              posted 1 minute ago
-            </p>
-          </Grid>
-        </Grid>
-        <Divider variant="fullWidth" style={{ margin: "30px 0" }} />
-      </Paper>
+      <Box>
+        <Box textAlign="center" marginTop="1rem">
+          {allEvents === null && (
+            <CircularProgress size={20} color="primary" />
+          )}
+        </Box>
+        {allEvents &&
+          allEvents.map((event) => (
+            <Comment key={Math.floor(Math.random() * 10000)} event={event} />
+          ))}
+      </Box>
       <Typography>Nostr ID: {getPublicKey(secretKey)}</Typography>
       <Typography>
         Status: {isConnected() ? "🟢 Connected" : "🔴 Disconnected"}
@@ -205,7 +195,14 @@ function Contact() {
               <Typography id="modal-modal-description" sx={{ mt: 2 }}>
                 Press the button below and sign the comment in Nostrum.
               </Typography>
-              <Button onClick={sendMessage} variant="contained" size="large" sx={{marginTop: "10px"}}>Comment</Button>
+              <Button
+                onClick={sendMessage}
+                variant="contained"
+                size="large"
+                sx={{ marginTop: "10px" }}
+              >
+                Comment
+              </Button>
             </Box>
           ) : (
             <Box>
